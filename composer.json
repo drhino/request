@@ -1,0 +1,20 @@
+{
+    "name": "drhino/request",
+    "description": "PSR request handler",
+    "license": "BSD-3-Clause",
+    "keywords": ["router", "request handler"],
+    "homepage": "https://github.com/drhino/request",
+    "require": {
+        "php": "~7.4.0 || ~8.0.0",
+        "nikic/fast-route": "^1.3",
+        "laminas/laminas-diactoros": "^2.6",
+        "laminas/laminas-httphandlerrunner": "^2.0",
+        "laminas/laminas-stratigility": "^3.4",
+        "symfony/polyfill-intl-normalizer": "^1.23"
+    },
+    "autoload": {
+        "psr-4": {
+            "drhino\\Request\\": "src/"
+        }
+    }
+}
