@@ -1,5 +1,6 @@
 {
     "name": "drhino/request",
+    "type": "library",
     "description": "PSR request handler",
     "license": "BSD-3-Clause",
     "keywords": ["router", "request handler"],
