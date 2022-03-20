@@ -1,6 +1,10 @@
 # request
 Route request handler.
 
+```bash
+composer require drhino/request
+```
+
 ```php
 <?php declare(strict_types=1);
 
