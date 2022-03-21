@@ -75,12 +75,11 @@ class Handler implements RequestHandlerInterface
             $dispatch = $dispatch->dispatch($method, $pathname);
 
             if (Dispatcher::NOT_FOUND === $dispatch[0]) {
-                throw new Exception('404 Route Not Found.', 404);
+                throw new HttpNotFoundException;
             }
 
             if (Dispatcher::METHOD_NOT_ALLOWED === $dispatch[0]) {
-                $this->headers['Allow'] = implode(', ', $dispatch[1]);
-                throw new Exception('405 Method Not Allowed.', 405);
+                throw new HttpMethodNotAllowedException($dispatch[1]);
             }
 
             $handler = $dispatch[1];
@@ -100,6 +99,9 @@ class Handler implements RequestHandlerInterface
             $response = $this->addHeaders($response, $this->headers);
 
             return $response;
+        }
+        catch (HttpNotFoundException|HttpMethodNotAllowedException $e) {
+            throw $e;
         }
         catch (Throwable $e) {
             return $this->errorResponse($e, $request);
